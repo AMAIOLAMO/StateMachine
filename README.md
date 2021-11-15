@@ -20,7 +20,7 @@ next, you'll need to create an instance of `StateMachine<T>` and pass your state
 ```cs
 using CXUtils; // add this if neccessary
 
-StateMachine<FooState> _myStateMachine;
+StateMachine<FooState> _myStateMachine = new StateMachine<FooState>();
 ```
 
 and voila! You have a very basic single state, state machine setup!
