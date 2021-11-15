@@ -18,6 +18,8 @@ public enum FooState
 
 next, you'll need to create an instance of `StateMachine<T>` and pass your state into it:
 ```cs
+using CXUtils; // add this if neccessary
+
 StateMachine<FooState> _myStateMachine;
 ```
 
