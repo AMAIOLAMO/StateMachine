@@ -1,6 +1,8 @@
 # StateMachine
----
+
 > A very basic, super easy to use, flexible State machine!
+
+---
 
 ### Usage
 
@@ -43,9 +45,11 @@ var previousState = _myStateMachine.PreviousState;
 var currentState = _myStateMachine.State;
 ```
 
+---
+
 ### Flexibility
 
-if you need to implement your own state machine, do not worry! I have also added a interface `IStateMachine<T>` for that case.
+if you need to implement your own state machine, do not worry! I have also added a interface [`IStateMachine<T>`](https://github.com/AMAIOLAMO/StateMachine/blob/master/Src/Domain/IStateMachine.cs) for that case.
 for more detail on how to implement, check the [`StateMachine<T>`](https://github.com/AMAIOLAMO/StateMachine/blob/master/Src/Domain/StateMachine.cs)
 
 
