@@ -5,21 +5,21 @@ namespace CXUtils
     /// <summary>
     ///     A machine that manages multiple states
     /// </summary>
-    public class StateMachine<T> : IStateMachine<T> where T : IEquatable<T>
+    public class StateMachine<T> : IStateMachine<T>
     {
         public StateMachine()
         {
             PreviousState = default;
-            _state = default;
+            State = default;
         }
 
         public void SetState( T newState )
         {
-            if ( _state.Equals( newState ) ) return;
+            if ( State.Equals( newState ) ) return;
             // else
 
-            PreviousState = _state;
-            _state = newState;
+            PreviousState = State;
+            State = newState;
 
             // raise event
             StateChanged?.Invoke( PreviousState, newState );
@@ -32,8 +32,6 @@ namespace CXUtils
 
         public T PreviousState { get; private set; }
 
-        public T State => _state;
-
-        T _state;
+        public T State { get; private set; }
     }
 }
