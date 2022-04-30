@@ -3,11 +3,11 @@ using System;
 namespace CXUtils
 {
     /// <summary>
-    ///     A machine that manages multiple states
+    ///     An event based state machine that manages multiple states
     /// </summary>
-    public class StateMachine<T> : IStateMachine<T> where T : IEquatable<T>
+    public class EventStateMachine<T> : IStateMachine<T> where T : IEquatable<T>
     {
-        public StateMachine()
+        public EventStateMachine()
         {
             PreviousState = default;
             _state = default;
