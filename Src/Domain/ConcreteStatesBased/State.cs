@@ -5,10 +5,8 @@
 	/// </summary>
 	public abstract class State : IState
 	{
-		public bool Active { get; private set; }
+		public virtual void EnteredHandler() { }
 
-		public virtual void EnteredHandler() => Active = true;
-		
-		public virtual void ExitHandler() => Active = false;
+		public virtual void ExitHandler() { }
 	}
 }

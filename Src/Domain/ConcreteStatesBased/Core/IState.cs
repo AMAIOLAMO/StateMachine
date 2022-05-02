@@ -14,10 +14,5 @@
 		///     Called when exiting a state
 		/// </summary>
 		public void ExitHandler();
-
-		/// <summary>
-		///     Returns whether this state is currently active
-		/// </summary>
-		public bool Active { get; }
 	}
 }

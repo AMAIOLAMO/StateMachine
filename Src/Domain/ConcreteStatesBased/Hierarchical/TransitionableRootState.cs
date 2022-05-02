@@ -5,12 +5,12 @@
 	/// </summary>
 	public abstract class TransitionableRootState : RootState, ITransitionableState
 	{
-		protected TransitionableRootState(IStateSetter<IState> stateSetter) =>
-			_stateSetter = stateSetter;
+		protected TransitionableRootState(IStateSetter<IState> parentStateSetter) =>
+			_parentStateSetter = parentStateSetter;
 
 		public void TransitionTo(IState state) =>
-			_stateSetter.SetState(state);
+			_parentStateSetter.SetState(state);
 
-		readonly IStateSetter<IState> _stateSetter;
+		readonly IStateSetter<IState> _parentStateSetter;
 	}
 }

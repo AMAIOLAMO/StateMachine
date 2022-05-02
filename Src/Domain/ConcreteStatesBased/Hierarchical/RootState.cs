@@ -5,6 +5,8 @@
 	/// </summary>
 	public abstract class RootState : State, IRootState
 	{
+		protected RootState() => _stateSetter = new RootStateSetter(this);
+
 		public override void EnteredHandler()
 		{
 			base.EnteredHandler();
@@ -16,10 +18,6 @@
 			base.ExitHandler();
 			State?.ExitHandler();
 		}
-		
-		
-
-		protected IState State { get; private set; }
 
 		public void SetState(IState state)
 		{
@@ -32,5 +30,10 @@
 
 			State?.EnteredHandler();
 		}
+		public IStateSetter<IState> GetStateSetter() => _stateSetter;
+
+		protected IState State { get; private set; }
+
+		readonly IStateSetter<IState> _stateSetter;
 	}
 }

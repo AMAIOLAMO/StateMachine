@@ -1,6 +1,6 @@
 ﻿namespace CXUtils.Concrete.Hierarchical
 {
-	public readonly struct RootStateSetter : IStateSetter<IState>
+	public class RootStateSetter : IStateSetter<IState>
 	{
 		public RootStateSetter(IRootState rootState) =>
 			_rootState = rootState;

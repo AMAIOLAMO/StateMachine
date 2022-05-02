@@ -23,8 +23,10 @@ namespace CXUtils
 			
             StateChanged?.Invoke( PreviousState, newState );
         }
+		
+		public IStateSetter<T> GetStateSetter() => new StateMachineSetter<T>(this);
 
-        /// <summary>
+		/// <summary>
         ///     Raises when a state changes
         /// </summary>
         public event Action<T, T> StateChanged;
