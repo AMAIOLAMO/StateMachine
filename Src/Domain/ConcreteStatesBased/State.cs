@@ -8,6 +8,7 @@
 		public bool Active { get; private set; }
 
 		public virtual void EnteredHandler() => Active = true;
+		
 		public virtual void ExitHandler() => Active = false;
 	}
 }

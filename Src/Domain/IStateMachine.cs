@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CXUtils
+﻿namespace CXUtils
 {
 	/// <summary>
 	///     Implements a machine that manages multiple states
@@ -9,13 +7,7 @@ namespace CXUtils
 	public interface IStateMachine<T>
 	{
 		void SetState(T newState);
-
-		/// <summary>
-		///     Emits when a state has been changed
-		/// </summary>
-		event Action<T, T> StateChanged;
-
-		T PreviousState { get; }
-		T State         { get; }
+		
+		T State { get; }
 	}
 }

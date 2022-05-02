@@ -1,20 +1,16 @@
 ﻿namespace CXUtils
 {
 	/// <summary>
-	///     A basic abstract state that handles setting active <br />
-	///     NOTE: remember when overriding Handlers, also call the base class's handler to allow
-	///     <see cref="Active" /> to get updated!
+	///     A basic abstract state that can transition states themselves
 	/// </summary>
-	public abstract class TransitionableState : State
+	public abstract class TransitionableState : State, ITransitionableState
 	{
-		protected TransitionableState(IStateMachine<IState> parent) => this.parent = parent;
+		protected TransitionableState(IStateSetter<IState> stateSetter) =>
+			_stateSetter = stateSetter;
 
-		protected readonly IStateMachine<IState> parent;
+		public void TransitionTo(IState state) =>
+			_stateSetter.SetState(state);
 
-		/// <summary>
-		///     Transitions to the given state
-		/// </summary>
-		protected void TransitionTo(IState state) =>
-			parent.SetState(state);
+		readonly IStateSetter<IState> _stateSetter;
 	}
 }
