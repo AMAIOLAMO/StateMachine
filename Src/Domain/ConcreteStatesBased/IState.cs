@@ -1,7 +1,7 @@
 ﻿namespace CXUtils
 {
 	/// <summary>
-	///     Implements a state for <see cref="StateMachine" />
+	///     Implements a state for <see cref="ConcreteStateMachine" />
 	/// </summary>
 	public interface IState
 	{

@@ -5,7 +5,7 @@ namespace CXUtils
 	/// <summary>
 	///     A Concrete State class based State machine, that handles multiple states
 	/// </summary>
-	public class StateMachine : IStateMachine<IState>
+	public class ConcreteStateMachine : IStateMachine<IState>
 	{
 		public void SetState(IState newState)
 		{
