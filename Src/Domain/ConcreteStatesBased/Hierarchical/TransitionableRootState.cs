@@ -3,14 +3,14 @@
 	/// <summary>
 	///     A transitionable root state
 	/// </summary>
-	public abstract class TransitionableRootState : RootState, ITransitionableState
+	public abstract class TransitionableRootState<T> : RootState<T>, ITransitionableState<T> where T : IState
 	{
-		protected TransitionableRootState(IStateSetter<IState> parentStateSetter) =>
+		protected TransitionableRootState(IStateSetter<T> parentStateSetter) =>
 			_parentStateSetter = parentStateSetter;
 
-		public void TransitionTo(IState state) =>
+		public void TransitionTo(T state) =>
 			_parentStateSetter.SetState(state);
 
-		readonly IStateSetter<IState> _parentStateSetter;
+		readonly IStateSetter<T> _parentStateSetter;
 	}
 }

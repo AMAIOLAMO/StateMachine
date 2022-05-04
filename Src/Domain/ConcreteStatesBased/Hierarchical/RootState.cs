@@ -3,37 +3,35 @@
 	/// <summary>
 	///     A basic abstract root state that handles sub states
 	/// </summary>
-	public abstract class RootState : State, IRootState
+	public abstract class RootState<T> : State, IRootState<T> where T : IState
 	{
-		protected RootState() => _stateSetter = new RootStateSetter(this);
+		protected RootState() => _stateSetter = new RootStateSetter<T>(this);
 
-		public override void EnteredHandler()
+		protected override void ActivateHandler()
 		{
-			base.EnteredHandler();
-			State?.EnteredHandler();
+			State?.Activate();
 		}
 
-		public override void ExitHandler()
+		protected override void DeactivateHandler()
 		{
-			base.ExitHandler();
-			State?.ExitHandler();
+			State?.Deactivate();
 		}
 
-		public void SetState(IState state)
+		public void SetState(T state)
 		{
-			if (State == state) return;
+			if (State != null && State.Equals(state)) return;
 			// else
 
-			State?.ExitHandler();
+			State?.Deactivate();
 
 			State = state;
-
-			State?.EnteredHandler();
+			
+			State?.Activate();
 		}
-		public IStateSetter<IState> GetStateSetter() => _stateSetter;
+		public IStateSetter<T> GetStateSetter() => _stateSetter;
 
-		protected IState State { get; private set; }
+		protected T State { get; private set; }
 
-		readonly IStateSetter<IState> _stateSetter;
+		readonly IStateSetter<T> _stateSetter;
 	}
 }

@@ -1,13 +1,13 @@
 ﻿namespace CXUtils.Concrete.Hierarchical
 {
-	public class RootStateSetter : IStateSetter<IState>
+	public class RootStateSetter<T> : IStateSetter<T> where T : IState
 	{
-		public RootStateSetter(IRootState rootState) =>
+		public RootStateSetter(IRootState<T> rootState) =>
 			_rootState = rootState;
 
-		public void SetState(IState state) =>
+		public void SetState(T state) =>
 			_rootState.SetState(state);
 
-		readonly IRootState _rootState;
+		readonly IRootState<T> _rootState;
 	}
 }

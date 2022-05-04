@@ -3,25 +3,25 @@
 	/// <summary>
 	///     A Concrete State class based State machine, that handles multiple states
 	/// </summary>
-	public class ConcreteStateMachine : IStateMachine<IState>
+	public class ConcreteStateMachine<T> : IStateMachine<T> where T : IState
 	{
-		public ConcreteStateMachine() => _setter = new StateMachineSetter<IState>(this);
+		public ConcreteStateMachine() => _setter = new StateMachineSetter<T>(this);
 
-		public void SetState(IState newState)
+		public void SetState(T newState)
 		{
-			if (State == newState) return;
+			if (State != null && State.Equals(newState)) return;
 			// else
 
-			State?.ExitHandler();
+			State?.Deactivate();
 
 			State = newState;
 
-			State?.EnteredHandler();
+			State?.Activate();
 		}
-		public IStateSetter<IState> GetStateSetter() => _setter;
+		public IStateSetter<T> GetStateSetter() => _setter;
 
-		public IState State { get; private set; }
+		public T State { get; private set; }
 
-		readonly StateMachineSetter<IState> _setter;
+		readonly StateMachineSetter<T> _setter;
 	}
 }

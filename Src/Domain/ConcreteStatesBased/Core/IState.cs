@@ -6,13 +6,22 @@
 	public interface IState
 	{
 		/// <summary>
-		///     Called when entering a state
+		///     Sets the current activeness of the state
 		/// </summary>
-		public void EnteredHandler();
+		public void SetActive(bool active);
 
 		/// <summary>
-		///     Called when exiting a state
+		///     Activates the current state
 		/// </summary>
-		public void ExitHandler();
+		public void Activate();
+		/// <summary>
+		///     Deactivates the current state
+		/// </summary>
+		public void Deactivate();
+
+		/// <summary>
+		///     returns whether the state is currently active or not
+		/// </summary>
+		public bool Active { get; }
 	}
 }

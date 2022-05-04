@@ -3,13 +3,13 @@
 	/// <summary>
 	///     Implements a state for hierarchical <see cref="ConcreteStateMachine" />
 	/// </summary>
-	public interface IRootState : IState
+	public interface IRootState<T> : IState where T : IState
 	{
 		/// <summary>
 		/// Sets the current root state's sub state
 		/// </summary>
-		public void SetState(IState state);
+		public void SetState(T state);
 
-		public IStateSetter<IState> GetStateSetter();
+		public IStateSetter<T> GetStateSetter();
 	}
 }

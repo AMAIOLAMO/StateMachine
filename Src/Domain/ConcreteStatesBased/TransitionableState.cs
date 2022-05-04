@@ -3,14 +3,14 @@
 	/// <summary>
 	///     A basic abstract state that can transition states themselves
 	/// </summary>
-	public abstract class TransitionableState : State, ITransitionableState
+	public abstract class TransitionableState<T> : State, ITransitionableState<T> where T : IState
 	{
-		protected TransitionableState(IStateSetter<IState> stateSetter) =>
+		protected TransitionableState(IStateSetter<T> stateSetter) =>
 			_stateSetter = stateSetter;
 
-		public void TransitionTo(IState state) =>
+		public void TransitionTo(T state) =>
 			_stateSetter.SetState(state);
 
-		readonly IStateSetter<IState> _stateSetter;
+		readonly IStateSetter<T> _stateSetter;
 	}
 }

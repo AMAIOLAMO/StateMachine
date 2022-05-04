@@ -1,10 +1,10 @@
 ﻿namespace CXUtils
 {
-	public interface ITransitionableState : IState
+	public interface ITransitionableState<in T> : IState where T : IState
 	{
 		/// <summary>
 		///     Transitions to the given state
 		/// </summary>
-		public void TransitionTo(IState state);
+		public void TransitionTo(T state);
 	}
 }
